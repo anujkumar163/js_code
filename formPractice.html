@@ -1,0 +1,303 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            small{
+                color:red;
+            }
+        </style>
+        <script>
+        function validateUserName(){
+         var status = true;
+         var username = document.getElementById("username").value;
+         var usernameError = document.getElementById("usernameError");
+         if(username.length == 0){
+           usernameError.innerHTML = "Username required";
+           status = false;
+         }
+         else
+           usernameError.innerHTML = "";
+         return status;
+      }
+        function validatePassword(){
+            var status=true;
+            var passwordObject=document.getElementById("password");
+            var password=passwordObject.value;
+            var passwordError=document.getElementById("passwordError");
+            var regEx="^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.[@#$%^&+=]).*$";
+            var result=password.match(regEx);
+            if(result==null){
+                password.innerHTML="password must 8 a-A, @-&";
+                status=false;
+                passwordObject.classList.add("border","border-danger");
+            }
+            else{
+                password.innerHTML="";
+                passwordObject.classList.remove("border-danger");
+                passwordObject.classList.add("border-success");
+            }
+            if(password.length==0){
+                status=fale;
+                passwordError.innerHTML="password required";
+
+            }
+            else if(password.lenrth<6 || password.length>10){
+                status=false;
+                passwordError.innerHTML="Password should be 6to10";
+            }
+            else 
+            passwordError.innerHTML="";
+            return status;
+
+        }
+
+        function validatePassword(){
+        var status = true;
+        /*
+         1) Is Empty condition
+         2) 6-10 letter
+       */
+        var password = document.getElementById("password").value;
+        
+        var passwordError = document.getElementById("passwordError");
+        
+        // at least 8 letter
+        // at least one uppercase
+        // at least one lower case
+        // at one special symbol
+        var regEx = "^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$";
+
+        var result = password.match(regEx);
+        if(result == null){
+            passwordError.innerHTML = "Password must containt at lest 8 letter 1 uppercase 1 lowercase and 1 special charachter";
+            status = false;
+        }
+        else
+          passwordError.innerHTML = "";
+        /*
+        if(password.length == 0){
+            status = false;
+            passwordError.innerHTML = "Password required";
+        }
+        else if(password.length<6 || password.length>10){
+            status = false;
+            passwordError.innerHTML = "Password should be 6 to 10 letter long";
+        }
+        else
+          passwordError.innerHTML = "";
+        */
+          return status;
+
+      }
+
+      function validateMobileNumber(){
+          var status = true;
+          /*
+            1) Empty condition
+            2) length should be 10
+            3) only digit allowed
+          */
+         var mobileNumber  = document.getElementById("mobile").value;
+         var mobileError = document.getElementById("mobileError");
+         
+         if(mobileNumber.length == 0){
+             status = false;
+             mobileError.innerHTML = "Mobile number required";
+         }
+         else if(mobileNumber.length !=10){
+             status = false;
+             mobileError.innerHTML = "Mobile must containt 10 digit";
+         }
+         else if(isNaN(mobileNumber)){
+             status = false;
+             mobileError.innerHTML = "Only digit allowed";
+         }
+         else
+           mobileError.innerHTML = "";
+         return status;
+      }
+      function validateData(){
+          var status = true;
+          var usernameStatus = validateUserName();
+          if(usernameStatus == false)
+           status = false;
+
+          var passwordStatus = validatePassword();    
+          if(passwordStatus == false)
+            status = false;
+
+          var mobileStatus = validateMobileNumber();
+          if(mobileStatus == false)
+           status = false;
+         
+          if(status)
+           alert("Registration Success");
+            
+          return status;
+      }
+      function showPassword(){
+          var passwordInputField = document.getElementById("password");
+          passwordInputField.type = "text";
+      }
+        function validateconfirmPassword(){
+            var status=true;
+            var confirmPasswordObject=document.getElementById("confirmPassword");
+            var password=document.getElementById("Password").value;
+            var confirmPassword=confirmPasswordObject.value;
+            var confirmPasswordError=document.getElementById("confirmPasswordError");
+
+            if(password != confirmPassword){
+                confirmPasswordError.innerHTML="password not match";
+                status=false;
+                confirmPasswordObject.classList.add("border","border-danger");
+
+            }
+            else{
+                confirmPasswordError.innerHTML="";
+                confirmPasswordObject.classList.remove("border-danger");
+                confirmPasswordObject.classList.add("border-success");
+            }
+            if(confirmPassword=="")
+            confirmPasswordObject.classList.remove("border-success");
+            return status;
+        
+        }
+
+        function validateData(){
+            var status=true;
+            var usernameStatus=validateUserName();
+            if(usernameStatus==false)
+            status=false;
+
+            var passwordStatus=validatePassword();
+            if(passwordStatus==false)
+            status=false;
+
+            var mobileStatus=validateMobileNumber();
+            if(mobileStatus==false)
+            status=false;
+
+            var confirmPasswordStatus=validateConfirmPassword();
+            if(confirmPasswordSttatus==false)
+            status=false;
+
+            var cityStatus = validateCity();
+            if(cityStatus == false)
+            status = false;
+
+            var skillSetStatus = validateSkillSet();
+            if(skillSetStatus == false)
+            status = false;  
+          
+            var fileStatus = validateFile();
+            if(fileStatus == false)
+            status = false;
+
+            var hobiesStatus=validateHobbies();
+            if(hobbiesStatus==false)
+            status=false;
+            if(status)
+            alert("Registration success");
+
+            return status;
+
+        }
+        function showPassword(){
+            var passwordInputField=document.getElementById("password");
+            passwordInputField.type="text";
+        }
+
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input onkeyup="validateUserName()" type="text" id="username" class="form-control"/>
+                    <small id="usernameError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input onkeyup="validatePassword()" type="password" id="password" class="form-control"/>
+                    <small id="passwordError"></small>
+                    <span onclick="showPassword()">Show password</span>  
+                </div>
+
+                <div class="form-group">
+                <label>Confirm password</label>
+                <input type="password" onkeyup="validateConfirmPassword()" class="form-control" id="confirmPassword"/>
+                <small id="confirmPasswordError"></small>
+                </div>
+                
+                <div class="form-group">
+                <label>Mobile number</label>
+                <input onkeyup="validateMobileNumber()" type="text" class="form-control" id="mobile"/>
+                <small id="mobileError"></small>
+                </div>
+
+                <div class="form-group">
+                <label>City</label>
+                <select onchange="validatecity()" id="city" class="form-control">
+                <option value='0'>Select city</option>
+                <option value="1">indore</option>
+                <option value="2">indore</option>
+                <option value="3">indore</option>
+                <option value="4">indore</option>
+                <option value="5">indore</option>
+                </select>
+                <small id="cityError"></small>
+                </div>
+
+                <div class="form-group">
+                <label>Selecct your skill</label>
+                <select onchange="validateSkillset()" id="skillset" multiple class="form-control">
+                <option value="0">Select skill</option>
+                <option value="1">Android</option>
+                <option value="2">Android</option>
+                <option value="3">Android</option>
+                <option value="4">Android</option>
+                <option value="5">Android</option>
+                <small id="skillSetError"></small>
+                </div>
+
+                <div class="form-group">
+                <input type="file" id="upload" onchange="validateFile()"accept=".py"/>
+                <small id="filerError"></small>
+                </div>
+
+                <div class="form-groip">
+                <label>Select hobbies</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                <input onchange="validateHobbies()" type="checkbox" class="form-check-input" id="chkHocky"/>
+                <label class="form-check-label">Cirecket</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                <input onchange="validateHobbies()" type="checkbox" class="form-check-input" id="chkCricket"/>
+                <label class="form-check-label">Circket</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                <input onchange="validateHobbies()" type="checkbox" class="form-check-input" id="chkFooball"/>
+                <label class="form-check-label">Circket</label>
+                </div>
+
+                <div>
+                <small id="hobbiesError"></small>
+                </div>
+
+
+                
+                <div class="form-group">
+                <button onclick="return validateData()" type="submit" class="btn btn-primary">Register</button>
+                </div>
+
+            </form>
+        </div>
+    </body>
+</html>

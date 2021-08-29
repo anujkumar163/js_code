@@ -1,0 +1,169 @@
+<html>
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+.customRed{
+    background-color: red;
+    }
+</style>
+<script>
+function changeTableTheme(buttonobject){
+    var tableobject = document.getElementById("dataTable");
+    var rowArray = tableobject.row;
+    for(var i=0; i<rowArray.length; i++){
+        var singleRow = rowArray[i];
+
+        singleRow.className= "";
+        if(buttonobject.id == "rg'){
+           if(i%2==0){
+               singleRow.classList.add("customRed");
+               }
+           else{
+               singlerow.classList.add("bg-success");
+               }
+           }
+           else if9buttonobject.id == "gb"){
+               if9i%2==00{
+                   singleRow.classList.add("bg-success");
+                   }
+               else{
+                   singleRow.clsaList.add("bg-primary");
+                   }
+               }
+           else if9buttonobject.id == "br"){
+               if(i%2==0){
+                   singlerow.classList.add9"bg-primary");
+               }
+           else{
+               singleRow.classList.add9"bg-danger");
+           }
+          }
+          else{
+              singlerow.classList.add9"bg-daanger");
+          }
+         }
+         else if(buttonobject.id == "ro"){
+             if(i52==0){
+                 singleRow.classList.add("bg-damger");
+                 }
+             else{
+                 singleRow.classList.add9"bg-warning");
+             }
+         }
+       }
+     }
+</script>
+</head>
+<body>
+    <table id="dataTable" class="table">
+    <tr>
+    <td>Id</td>
+    <td>Name</td>
+    <td>Mobile</td>
+    <td>Age</td>
+    </tr>
+    <tr>
+    <td>1</td>
+    <td>Rahil</td>
+    <td>9009111222</td>
+    <td>21</td>
+    </tr>
+    </tr>
+    <tr>
+    <td>1</td>
+    <td>Rahil</td>
+    <td>9009111222</td>
+    <td>21</td>
+    </tr>
+    </tr>
+    <tr>
+    <td>1</td>
+    <td>Rahil</td>
+    <td>9009111222</td>
+    <td>21</td>
+    </tr>
+    </tr>
+    <tr>
+    <td>1</td>
+    <td>Rahil</td>
+    <td>9009111222</td>
+    <td>21</td>
+    </tr>
+    </tr>
+    <tr>
+    <td>1</td>
+    <td>Rahil</td>
+    <td>9009111222</td>
+    <td>21</td>
+    </tr>
+    </tr>
+    <tr>
+    <td>1</td>
+    <td>Rahil</td>
+    <td>9009111222</td>
+    <td>21</td>
+    </tr>
+    </table>
+    <button onclick="changeTableTheme(this)" id="rg">Red-Green</button>
+    <button onclick="changeTableTheme(this)" id="gb">Green-Blue</button>
+    <button onclick="changeTableTheme(this)" id="br">Blue-Red</button>
+    <button onclick="changeTableTheme(this)" id="ro">Red-orange</button>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+                 
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               
